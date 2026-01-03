@@ -10,7 +10,7 @@ export default function AdBanner() {
 
     // Set atOptions on window
     (window as any).atOptions = {
-      key: "4f0a57d03110f0eafcaed5300cff1c04",
+      key: "9b14cfb06bba0d17b334eda159dd21c5",
       format: "iframe",
       height: 50,
       width: 320,
@@ -19,7 +19,7 @@ export default function AdBanner() {
 
     // Create and inject the script
     const script = document.createElement("script");
-    script.src = "https://www.highperformanceformat.com/4f0a57d03110f0eafcaed5300cff1c04/invoke.js";
+    script.src = "https://www.highperformanceformat.com/9b14cfb06bba0d17b334eda159dd21c5/invoke.js";
     script.async = true;
     containerRef.current.appendChild(script);
 
