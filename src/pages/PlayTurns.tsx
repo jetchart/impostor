@@ -393,7 +393,6 @@ export default function PlayTurns() {
       currentVoterIndex: 0
     } : null);
 
-    await speakText("¡Es hora de votar! ¿Quién es el impostor?");
   };
 
   const getCurrentVoter = useCallback(() => {
