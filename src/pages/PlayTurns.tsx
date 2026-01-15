@@ -385,7 +385,6 @@ export default function PlayTurns() {
     const botPlayers = gameState.players.filter(p => p.isBot);
     const votingOrder = [...humanPlayers.map(p => p.name), ...botPlayers.map(p => p.name)];
 
-    await speakText("¡Es hora de votar! ¿Quién es el impostor?");
     setGameState(prev => prev ? { 
       ...prev, 
       phase: "voting", 
@@ -393,6 +392,8 @@ export default function PlayTurns() {
       votingOrder,
       currentVoterIndex: 0
     } : null);
+
+    await speakText("¡Es hora de votar! ¿Quién es el impostor?");
   };
 
   const getCurrentVoter = useCallback(() => {
@@ -959,15 +960,16 @@ export default function PlayTurns() {
                   );
                 }
 
+                const disabled = player.hasSeenWord || showingCard !== null;
                 return (
                   <button
                     key={index}
-                    onClick={() => !player.hasSeenWord && handleRevealCard(index)}
-                    disabled={player.hasSeenWord}
+                    onClick={() => !player.hasSeenWord && !showingCard && handleRevealCard(index)}
+                    disabled={disabled}
                     className={cn(
                       "w-full flex items-center justify-between rounded-lg border p-4 transition-all",
-                      player.hasSeenWord
-                        ? "opacity-50 bg-secondary/50 border-border/50"
+                      player.hasSeenWord || showingCard !== null
+                        ? "opacity-50 bg-secondary/50 border-border/50 cursor-not-allowed"
                         : "bg-card border-border/50 hover:border-primary/50 hover:scale-[1.02]"
                     )}
                   >
