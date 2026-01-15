@@ -380,12 +380,12 @@ export default function PlayTurns() {
 
   const startVoting = async () => {
     if (!gameState) return;
-    
     // Create voting order: humans first (in player order), then bots
     const humanPlayers = gameState.players.filter(p => !p.isBot);
     const botPlayers = gameState.players.filter(p => p.isBot);
     const votingOrder = [...humanPlayers.map(p => p.name), ...botPlayers.map(p => p.name)];
-    
+
+    await speakText("¡Es hora de votar! ¿Quién es el impostor?");
     setGameState(prev => prev ? { 
       ...prev, 
       phase: "voting", 
@@ -393,7 +393,6 @@ export default function PlayTurns() {
       votingOrder,
       currentVoterIndex: 0
     } : null);
-    await speakText("¡Es hora de votar! ¿Quién es el impostor?");
   };
 
   const getCurrentVoter = useCallback(() => {
@@ -1051,11 +1050,6 @@ export default function PlayTurns() {
             {/* Human input */}
             {!currentPlayer.isBot && !isGenerating && !isSpeaking && (
               <div className="space-y-3">
-                <p className="text-sm text-muted-foreground text-center">
-                  {gameState.players[currentPlayer.index].isImpostor 
-                    ? "Inventá algo creíble (no sabés la palabra)" 
-                    : "Describí la palabra sin decirla"}
-                </p>
                 
                 {/* Input + Mic + Send in one row */}
                 <div className="flex gap-2">
