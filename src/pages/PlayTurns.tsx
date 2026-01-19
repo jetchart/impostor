@@ -1135,7 +1135,8 @@ export default function PlayTurns() {
 
             {/* Vote button */}
             <Button 
-              onClick={startVoting} 
+              onClick={startVoting}
+              disabled={gameState.descriptions.length < gameState.players.length * gameState.currentRound}
               variant="outline" 
               size="sm"
               className="bg-gradient-to-r from-orange-500/20 to-red-500/20 border-orange-500/50 hover:border-orange-500 hover:from-orange-500/30 hover:to-red-500/30 text-orange-300 hover:text-orange-200 transition-all"
