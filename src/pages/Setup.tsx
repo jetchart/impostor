@@ -23,7 +23,7 @@ export default function Setup() {
   const [newPlayerName, setNewPlayerName] = useState("");
   const [isAddingBot, setIsAddingBot] = useState(false);
   const [impostorCount, setImpostorCount] = useState(1);
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [selectedCategories, setSelectedCategories] = useState<string[]>(categories.map(c => c.id));
   const [difficulty, setDifficulty] = useState<Difficulty>("normal");
   const [allowImpostorHint, setAllowImpostorHint] = useState(true);
 
