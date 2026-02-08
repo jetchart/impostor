@@ -10,7 +10,7 @@ export default function AdBanner() {
 
     // Set atOptions on window
     (window as any).atOptions = {
-      key: "9b14cfb06bba0d17b334eda159dd21c5",
+      key: "9b14cfb06bba0d17b334eda159dd21c",//5
       format: "iframe",
       height: 50,
       width: 320,
